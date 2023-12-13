@@ -11,4 +11,5 @@ int main() {
         nodes.push_back(new BiTreeNode<int>(i));
     }
     BiTree<int> bt(nodes[0]);
+    bt.preOrder([](NodeIter<int> * iter)->bool {if (iter)cout << iter->data() << endl ;else cout << "None" << endl ; return true ;});
 }

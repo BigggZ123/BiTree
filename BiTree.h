@@ -29,7 +29,7 @@ public :
     explicit BiTree(BiTreeNode<T>* node) : _root(node) {}
 
     NodeIter<T>* root() override{
-        return iterator(this->_root);
+        return new iterator(this->_root);
     }
 
 protected:
@@ -38,23 +38,28 @@ protected:
 
 template <typename T>
 class BiTree<T>::iterator : public NodeIter<T>{
+public :
+    explicit iterator(BiTreeNode<T>* node) : cur(node) {}
+    NodeIter<T>* LChild () override{
+        if (cur->LChild){
+            return new BiTree<T>::iterator(cur->LChild);
+        }
+        return nullptr;
+    }
+    NodeIter<T>* RChild () override {
+        if (cur->RChild)
+            return new BiTree<T>::iterator(cur->RChild);
+        return nullptr;
+    }
+    T data() override{
+        return cur->data ;
+    }
+    int height()override{
+        return -2 ;
+    }
+
 protected:
     BiTreeNode<T>* cur ;
-public:
-    explicit iterator(BiTreeNode<T>* node) : cur(node) {}
-    NodeIter<T>* RChild() override {
-        return new iterator(this->cur->RChild);
-    }
-
-    NodeIter<T>* LChild() override {
-        return new iterator(this->cur->LChild);
-    }
-
-    T data() override {return this->cur->data ;}
-
-    int height() override{
-        return -2;
-    }
 };
 
 #endif //BITREE_BITREE_H

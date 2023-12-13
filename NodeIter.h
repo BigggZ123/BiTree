@@ -8,34 +8,27 @@
 template <typename T>
 class NodeIter{
 public:
-    virtual T            data() = 0 ;
-    virtual NodeIter<T>* RChild() = 0 ;
-    virtual NodeIter<T>* LChild() = 0 ;
-    virtual int          height() = 0 ;
+    virtual NodeIter<T>* LChild()    = 0 ;
+    virtual NodeIter<T>* RChild()    = 0 ;
+    virtual T           data()      = 0 ;
+    virtual int         height()    = 0 ;
 };
 
 template <typename T>
 class iBiTree{
 public :
-    virtual NodeIter<T>* root() = 0;
-
-    virtual bool preOrder( bool (*visit) (NodeIter<T>*)){
-        auto root = this->root() ;
-        return PreOrder(root , visit);
-    };
-
-    static bool PreOrder(NodeIter<T>*node , bool (*visit) (NodeIter<T>*)){
-        if (not visit(node)){
+    virtual NodeIter<T>* root() = 0 ;
+    static bool PreOrder(NodeIter<T>* node , bool(*visit)(NodeIter<T>*)){
+        if (not visit(node))
             return false ;
-        }
-        if (not visit(node->RChild())){
+        if (not visit(node->LChild()))
             return false ;
-        }
-        if (not visit(node->LChild())){
+        if (not visit(node->RChild()))
             return false ;
-        }
         return true ;
-    };
+    }
+    virtual bool preOrder(bool (*visit)(NodeIter<T>*)){
+        return PreOrder(this->root() , visit);
+    }
 };
-
 #endif //BITREE_NODEITER_H

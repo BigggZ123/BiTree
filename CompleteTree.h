@@ -42,7 +42,7 @@ public :
     int height() override{
         if (datas.size() == 0)
             return -1 ;
-        std::vector<T> now (idx);
+        std::vector<T> now (idx + 1);
         return treeHeight(datas) - treeHeight(now) ;
     }
 

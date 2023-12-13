@@ -8,20 +8,20 @@
 template <typename T>
 class NodeIter{
 public:
-    virtual T&           data() = 0 ;
-    virtual NodeIter<T>* &RChild() = 0 ;
-    virtual NodeIter<T>* &LChild() = 0 ;
+    virtual T            data() = 0 ;
+    virtual NodeIter<T>* RChild() = 0 ;
+    virtual NodeIter<T>* LChild() = 0 ;
     virtual int          height() = 0 ;
 };
 
 template <typename T>
 class iBiTree{
 public :
-    virtual NodeIter<T>*& root() = 0;
+    virtual NodeIter<T>* root() = 0;
 
     virtual bool preOrder( bool (*visit) (NodeIter<T>*)){
-        NodeIter<T>* root = this->root() ;
-        return iBiTree<T>(root , visit);
+        auto root = this->root() ;
+        return PreOrder(root , visit);
     };
 
     static bool PreOrder(NodeIter<T>*node , bool (*visit) (NodeIter<T>*)){

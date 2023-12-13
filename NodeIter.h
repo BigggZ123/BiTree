@@ -8,8 +8,9 @@
 template <typename T>
 class NodeIter{
 public:
-    virtual NodeIter<T>*LChild      ()  = 0 ;
-    virtual NodeIter<T>*RChild      ()  = 0 ;
+    virtual NodeIter<T>*LChild      ()                  {return nullptr;};
+    virtual NodeIter<T>*RChild      ()                  {return nullptr;};
+    virtual NodeIter<T>*parent      ()                  {return nullptr;}
     virtual T           data        ()  = 0 ;
     virtual int         height      ()  = 0 ;
     //有些迭代器不能修改，直接返回reject，及false

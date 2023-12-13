@@ -3,29 +3,32 @@
 #include "BiTree.h"
 #include <vector>
 #include "BinarySearchTree.h"
+#include "CompleteTree.h"
 using namespace std ;
 
 
 int main() {
-//    vector<BiTreeNode<int>*> nodes ;
-//    for (int i = 0 ; i < 10 ; i ++){
-//        nodes.push_back(new BiTreeNode<int>(i));
+//    const int size = 8 ;
+//    vector<vector<int> > vecs(size);
+//    for(int i = 0 ; i < size ; i ++){
+//        for (int j = 0 ; j < i ; j ++){
+//            vecs[i].push_back(1);
+//        }
 //    }
-//    BiTree<int> bt(nodes[0]);
-//    bt.root()->setLChild(10);
-//    bt.root()->setRChild(20);
-//    bt.root()->LChild()->setLChild(30);
-//    bt.root()->LChild()->LChild()->setLChild(40);
-////    auto it = (BiTree<int>::iterator*)bt.root() ;
-////    cout << it->base()->LChild->LChild->data << endl ;
-////    NodeIter<int>* it = bt.root()->LChild()->LChild() ;
-////    cout << it->data() << endl ;
-//    bt.preOrder([](NodeIter<int> * iter)->bool {
-//        if (not iter)
-//            return true ;
-//        else
-//            cout <<  iter->data() << ":\t" <<iter->height() << endl ;
-//        return true ;
-//    });
+//    cout << "Loaded!" << endl ;
+//    for (auto it = vecs.begin(); it != vecs.end() ; it ++){
+//        cout << CompleteTree<int>::iterator::treeHeight(*it) << endl ;
+//    }
+//    cout << vecs.size() << endl ;
+//    vector<int> v(10);
+//    v.push_back(100);
+//    cout << v.size() << endl ;
+    vector<int> v(7);
+    for (int i = 0 ; i < 7 ; i ++){
+        CompleteTree<int>::iterator it (i, v);
+        cout << it.height() << endl ;
+
+    }
+
 
 }

@@ -15,4 +15,15 @@ public :
     virtual Node_Template<T>*&  RChild() = 0 ;
 };
 
+
+template <
+        typename T  ,
+        template <typename>
+            typename Node
+        >
+class iTree{
+public :
+
+};
+
 #endif //BITREE_NODE_TEMPLATE_H

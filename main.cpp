@@ -6,29 +6,26 @@
 #include "CompleteTree.h"
 using namespace std ;
 
+template <typename T>
+auto visit (NodeIter<T>* node) -> bool{
+    if (not node){
+        return true ;
+    }
+    cout << node->data() << endl;
+    return true ;
+};
 
 int main() {
-//    const int size = 8 ;
-//    vector<vector<int> > vecs(size);
-//    for(int i = 0 ; i < size ; i ++){
-//        for (int j = 0 ; j < i ; j ++){
-//            vecs[i].push_back(1);
-//        }
+//    vector<int> v ;
+//    for (int i = 0 ; i < 7 ;  i ++){
+//        v.push_back(i + 1);
 //    }
-//    cout << "Loaded!" << endl ;
-//    for (auto it = vecs.begin(); it != vecs.end() ; it ++){
-//        cout << CompleteTree<int>::iterator::treeHeight(*it) << endl ;
+//    CompleteTree<int> ct ;
+//    for (int i =  0 ; i < 100 ; i ++){
+//        ct.insert(i + 1) ;
 //    }
-//    cout << vecs.size() << endl ;
-//    vector<int> v(10);
-//    v.push_back(100);
-//    cout << v.size() << endl ;
-    vector<int> v(7);
-    for (int i = 0 ; i < 7 ; i ++){
-        CompleteTree<int>::iterator it (i, v);
-        cout << it.height() << endl ;
-
-    }
-
-
+//    auto it = ct.root() ;
+////    cout << ct.root()->LChild()->LChild()->parent()->parent()->data() << endl ;
+//    ct.preOrder(visit);
+    BinarySearchTree<int> bst ;
 }

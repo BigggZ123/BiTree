@@ -9,4 +9,5 @@ add_executable(BiTree main.cpp
         CompleteTree.h
         iBiTree.h
         BinarySearchTree.h
+        BiTreeContainer.h
 )

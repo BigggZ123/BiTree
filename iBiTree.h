@@ -9,7 +9,7 @@
 template <typename T>
 class iBiTree{
 public :
-    virtual NodeIter<T>* root() = 0 ;
+    virtual NodeIter<T>* root() { return nullptr;}
 
     static bool PreOrder(NodeIter<T>* node , bool(*visit)(NodeIter<T>*)){
         //对空也应当执行访问操作
@@ -91,8 +91,8 @@ public :
                 nodes.push(cur->RChild());
             }
 
-
         }
+        return true ;
     }
 
     virtual  bool levelOrder(bool (*visit)(NodeIter<T>*)){

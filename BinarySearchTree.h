@@ -14,12 +14,14 @@ public :
     using BiTree<T>::preOrder ;
     using BiTree<T>::inOrder ;
     using BiTree<T>::postOrder;
-    BinarySearchTree() : BiTree<T>(nullptr) {}
+    BinarySearchTree(bool (*comp) (T , T)) : BiTree<T>(nullptr) {}
 public:
     bool        insert  (T data) override ;
     bool        remove  (T data) override ;
     NodeIter<T>*locate  (T data) override ;
     static BiTreeNode<T>* Digout(BiTree<T>* node);
+protected:
+    bool (* comp)(T, T) ;
 };
 
 #endif //BITREE_BINARYSEARCHTREE_H

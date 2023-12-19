@@ -17,11 +17,12 @@ public :
     NodeIter<T>*    root    () override ;
     bool            insert  (T data) override ;
     bool            remove  (T data) override ;
-
+    NodeIter<T>*    locate  (T data) override ;
 protected:
 public:
     std::vector<T> datas ;
 };
+
 
 template<typename T>
 bool CompleteTree<T>::remove(T data) {
@@ -39,6 +40,15 @@ bool CompleteTree<T>::insert(T data) {
     return true ;
 }
 
+template<typename T>
+NodeIter<T> *CompleteTree<T>::locate(T data) {
+    for (int i = 0 ; i < this->datas.size() ; i ++){
+        if (this->datas[i] == data){
+            return new CompleteTree<T>::iterator(i , this->datas);
+        }
+    }
+    return nullptr;
+}
 
 template<typename T>
 NodeIter<T> *CompleteTree<T>::root() {

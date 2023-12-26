@@ -11,8 +11,8 @@ class iBiTree{
 public :
     virtual NodeIter<T>* root() = 0 ;
 
-
-    virtual bool preOrder(bool (*visit)(NodeIter<T>*)){
+    template <typename _Visit>
+    bool preOrder(_Visit visit){
         return PreOrder(this->root() , visit);
     }
 

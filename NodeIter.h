@@ -5,6 +5,7 @@
 #ifndef BITREE_NODEITER_H
 #define BITREE_NODEITER_H
 #include <queue>
+#include <functional>
 
 template <typename T>
 class NodeIter{
@@ -22,22 +23,23 @@ public:
 };
 
 
-template <typename T>
-bool PreOrder(NodeIter<T>* node , bool(*visit)(NodeIter<T>*)){
+
+template <typename T, typename _Visit>
+bool PreOrder(NodeIter<T>* node, _Visit __visit) {
     //对空也应当执行访问操作
-    if (not node){
-        if (not visit(node))
-            return false ;
-        return true ;
+    if (not node) {
+        if (not __visit(node))
+            return false;
+        return true;
     }
 
-    if (not visit(node))
-        return false ;
-    if (not PreOrder(node->LChild() , visit))
-        return false ;
-    if (not PreOrder(node->RChild() , visit))
-        return false ;
-    return true ;
+    if (not __visit(node))
+        return false;
+    if (not PreOrder(node->LChild(), __visit))
+        return false;
+    if (not PreOrder(node->RChild(), __visit))
+        return false;
+    return true;//我之前的代码最后tm忘记返回true了....
 }
 
 template <typename T>
